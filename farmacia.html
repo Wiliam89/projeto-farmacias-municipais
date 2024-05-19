@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Farmacia Municipal</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/Farmacia.css"/>
+    <link rel="stylesheet" type="text/css" href="css/mediascreen.css"/>
+</head>
+<body onresize="mudouTamanho()">
+    <header id="cabecalho">
+        <h1>Site de Agendamento e Informações Farmacia Municipal</h1> 
+        <h2>Seja bem vindo ao nosso site de agendamento e informações</h2>   
+   </header>
+   <img id="central" src="_imagens/phar-farm-med.jpg.jpg"/> 
+   <div id="interface">
+    <header id="cabecalho">         
+          <ul type="disc">
+            <h1>Menu Principal</h1> 
+            <div id="burguer" class="material-icons"   onclick="clickMenu()">menu</div> 
+            <nav id="menu">         
+<li onmouseover="mudaFoto('_imagens/phar-farm-med.jpg.jpg')" onmouseout="mudaFoto('_imagens/phar-farm-med.jpg.jpg')"><a href='listamedicamentos.html'>Lista de Medicamentos em falta</a></li>
+<li onmouseover="mudaFoto('_imagens/posto-sj.jpg.jpg')" onmouseout="mudaFoto('_imagens/posto-sj.jpg.jpg')"><a href='agenda.html'>Posto Sao jose</a></li>
+<li onmouseover="mudaFoto('_imagens/posto-ns.jpg.jpg')" onmouseout="mudaFoto('_imagens/posto-ns.jpg.jpg')"><a href='agenda.html'>Posto N.S das graças</a></li>
+<li onmouseover="mudaFoto('_imagens/posto-nt.jpg.jpg')" onmouseout="mudaFoto('_imagens/posto-nt.jpg.jpg')"><a href='agenda.html'>Posto Niteroi</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <script language="javascript" src="_javascript/farmacia.js"></script>
+  </body>
+</html>
