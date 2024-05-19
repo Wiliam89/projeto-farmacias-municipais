@@ -9,9 +9,9 @@ if (!isset($data['date']) || !isset($data['time']) || empty($data['date']) || em
 
 // Dados de conexão com o banco de dados
 $servername = "localhost";
-$username = "root";
-$password = "05113005";
-$dbname = "agenda";
+$username = "****";
+$password = "*****";
+$dbname = "*****";
 
 // Cria uma conexão com o banco de dados
 $conn = new mysqli($servername, $username, $password, $dbname);
