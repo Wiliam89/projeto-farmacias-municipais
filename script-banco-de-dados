@@ -1,0 +1,59 @@
+-- Criação da tabela 'agendamentos'
+CREATE TABLE IF NOT EXISTS agendamentos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    data DATE NOT NULL,
+    horario TIME NOT NULL
+);
+
+-- Criação de um usuário com permissões adequadas
+CREATE USER '*******'@'localhost' IDENTIFIED BY '******';
+GRANT ALL PRIVILEGES ON agendamentos TO '******'@'localhost'; 
+
+-- Inserção de alguns dados de exemplo na tabela 'agendamentos'
+INSERT INTO agendamentos (nome, data, horario) VALUES
+('Fulano', '2024-04-17', '08:00'),
+('Ciclano', '2024-04-17', '09:00'),
+('Beltrano', '2024-04-18', '10:00');
+
+
+-- Criação de um usuário com permissões adequadas
+CREATE USER '******'@'localhost' IDENTIFIED BY '******';
+GRANT ALL PRIVILEGES ON agendamentos TO '******'@'localhost';
+
+-- Inserção dos horários disponíveis na tabela 'agendamentos'
+INSERT INTO agendamentos (data, horario)
+SELECT '2024-04-17', horario
+FROM (
+    SELECT '08:00' AS horario UNION ALL
+    SELECT '08:10' UNION ALL
+    SELECT '08:20' UNION ALL
+    SELECT '08:30' UNION ALL
+    SELECT '08:40' UNION ALL
+    SELECT '08:50' UNION ALL
+    SELECT '09:00' UNION ALL
+    SELECT '09:10' UNION ALL
+    SELECT '09:20' UNION ALL
+    SELECT '09:30' UNION ALL
+    SELECT '09:40' UNION ALL
+    SELECT '09:50' UNION ALL
+    SELECT '10:00' UNION ALL
+    SELECT '10:10' UNION ALL
+    SELECT '10:20' UNION ALL
+    SELECT '10:30' UNION ALL
+    SELECT '10:40' UNION ALL
+    SELECT '10:50' UNION ALL
+    SELECT '11:00' UNION ALL
+    SELECT '11:10' UNION ALL
+    SELECT '11:20' UNION ALL
+    SELECT '11:30' UNION ALL
+    SELECT '11:40' UNION ALL
+    SELECT '11:50'
+) AS horarios_disponiveis;
+
+-- Adiciona restrição para permitir apenas 4 agendamentos a cada 10 minutos
+ALTER TABLE agendamentos
+ADD CONSTRAINT restricao_agendamentos
+CHECK (
+    (SELECT COUNT(*) FROM agendamentos AS a2 WHERE a2.data = agendamentos.data AND TIMEDIFF(a2.horario, agendamentos.horario) BETWEEN '00:00:00' AND '00:10:00') <= 4
+);
